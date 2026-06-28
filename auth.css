@@ -1,0 +1,174 @@
+/* ============================================================
+   MÖRK BORG COMPANION — auth.css
+   Estilos para telas de autenticação e elementos de nuvem
+   ============================================================ */
+
+/* ── TELA AUTH ──────────────────────────────────────────────── */
+#screen-auth .auth-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ── ABAS LOGIN / CADASTRO ──────────────────────────────────── */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  max-width: 360px;
+  margin: 1.5rem 0 0;
+  border: 1px solid var(--stone, #333);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  color: var(--muted, #666);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-tab.active {
+  background: var(--crimson, #8b1a1a);
+  color: var(--bone, #e8dcc8);
+}
+
+.auth-tab:hover:not(.active) {
+  background: var(--stone, #1a1a1a);
+  color: var(--bone, #e8dcc8);
+}
+
+/* ── CAIXA DO FORMULÁRIO ────────────────────────────────────── */
+.auth-box {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card-bg, #111);
+  border: 1px solid var(--stone, #333);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 1.5rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── MENSAGENS DE ERRO / SUCESSO ─────────────────────────────── */
+.auth-error {
+  color: #ff4444;
+  font-size: 0.8rem;
+  font-family: var(--font-mono, monospace);
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ff444444;
+  border-radius: 3px;
+  background: #ff444411;
+}
+
+.auth-success {
+  color: #44bb44;
+  font-size: 0.8rem;
+  font-family: var(--font-mono, monospace);
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #44bb4444;
+  border-radius: 3px;
+  background: #44bb4411;
+}
+
+/* ── HOME APÓS LOGIN ─────────────────────────────────────────── */
+.home-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--card-bg, #111);
+  border: 1px solid var(--stone, #333);
+  border-radius: 4px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.saved-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 0.5rem;
+}
+
+/* ── LOADING ─────────────────────────────────────────────────── */
+.cloud-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted, #666);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+.spinner {
+  animation: spin 1.2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── RETRATO: STATUS DE UPLOAD ───────────────────────────────── */
+.portrait-status {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.75);
+  border-radius: 3px;
+  font-size: 0.75rem;
+  padding: 2px 5px;
+  color: var(--bone, #e8dcc8);
+}
+
+/* ── BOTÃO SALVAR COM SPINNER ────────────────────────────────── */
+#btn-salvar {
+  position: relative;
+  min-width: 90px;
+}
+
+/* ── PERSONAGEM SALVO NA NUVEM (badge) ───────────────────────── */
+.char-cloud-badge {
+  font-size: 0.65rem;
+  color: var(--muted, #666);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.char-cloud-badge::before {
+  content: '☁';
+  color: #4a90d9;
+}

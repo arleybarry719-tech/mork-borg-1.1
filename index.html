@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="MÖRK BORG Companion — Criador de personagens com nuvem">
+  <title>MÖRK BORG Companion</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/auth.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ══════════════════════════════════════════
+       TELA AUTH (Login / Cadastro)
+  ══════════════════════════════════════════ -->
+  <section id="screen-auth" class="screen">
+    <div class="auth-content">
+
+      <span class="logo-skull">☠</span>
+      <h1>MÖRK BORG</h1>
+      <p class="logo-tagline">— companion &amp; criador de personagens —</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login"  onclick="switchAuthTab('login')">Entrar</button>
+        <button class="auth-tab"        id="tab-signup" onclick="switchAuthTab('signup')">Cadastrar</button>
+      </div>
+
+      <div class="auth-box">
+        <!-- LOGIN -->
+        <div id="form-login" class="auth-form">
+          <div class="field-group">
+            <label class="field-label">E-mail</label>
+            <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Senha</label>
+            <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+          </div>
+          <button class="btn btn-primary btn-large" id="btn-login">⚔ Entrar</button>
+          <p id="login-error" class="auth-error" style="display:none"></p>
+        </div>
+
+        <!-- CADASTRO -->
+        <div id="form-signup" class="auth-form" style="display:none">
+          <div class="field-group">
+            <label class="field-label">E-mail</label>
+            <input type="email" id="signup-email" placeholder="seu@email.com" autocomplete="email">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Senha (mín. 6 caracteres)</label>
+            <input type="password" id="signup-password" placeholder="••••••••" autocomplete="new-password">
+          </div>
+          <button class="btn btn-primary btn-large" id="btn-signup">💀 Criar conta</button>
+          <p id="signup-error"   class="auth-error"   style="display:none"></p>
+          <p id="signup-success" class="auth-success" style="display:none">
+            ✅ Conta criada! Verifique seu e-mail para confirmar.
+          </p>
+        </div>
+      </div>
+
+      <div class="ornament" style="margin-top:1.5rem">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <p style="color:var(--muted);font-size:0.72rem;font-style:italic;margin-top:0.5rem">
+        Fichas salvas com segurança na nuvem • Supabase
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TELA HOME
+  ══════════════════════════════════════════ -->
+  <section id="screen-home" class="screen">
+    <div class="home-content">
+
+      <div class="home-top-bar">
+        <div class="user-badge">
+          <span class="user-icon">👤</span>
+          <span id="user-email-display" style="font-size:0.75rem;color:var(--muted)"></span>
+        </div>
+        <button id="btn-logout" class="btn btn-sm btn-danger">Sair</button>
+      </div>
+
+      <span class="logo-skull">☠</span>
+      <h1>MÖRK BORG</h1>
+      <p class="logo-tagline">— companion &amp; criador de personagens —</p>
+
+      <button id="btn-create" class="btn btn-primary btn-large">
+        🎲 Criar Personagem
+      </button>
+
+      <div class="home-divider"></div>
+
+      <div class="saved-section-header">
+        <p class="section-eyebrow">Personagens na nuvem</p>
+        <button id="btn-refresh-chars" class="btn btn-sm" title="Atualizar lista">↻ Atualizar</button>
+      </div>
+
+      <div id="cloud-loading" class="cloud-loading" style="display:none">
+        <span class="spinner">⌛</span> Carregando personagens…
+      </div>
+
+      <div id="saved-chars-list"></div>
+
+      <div class="ornament" style="margin-top:2rem">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <p style="color:var(--muted);font-size:0.75rem;font-style:italic">
+        Seus dados ficam seguros na nuvem.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TELA FICHA
+  ══════════════════════════════════════════ -->
+  <section id="screen-sheet" class="screen">
+
+    <!-- HEADER FIXO -->
+    <header class="sheet-header">
+      <div class="sheet-title-area">
+        <button id="btn-home" class="btn btn-sm">← Início</button>
+        <span class="sheet-logo">☠ MÖRK BORG</span>
+      </div>
+      <nav class="sheet-nav-buttons">
+        <button id="btn-gerar-char"  class="btn btn-primary">🎲 Gerar</button>
+        <button id="btn-gerar-nome"  class="btn">🎲 Nome</button>
+        <button id="btn-gerar-equip" class="btn">🎲 Equip.</button>
+        <button id="btn-gerar-poder" class="btn">🎲 Poder</button>
+        <button id="btn-salvar"      class="btn btn-primary">
+          <span id="save-label">💾 Salvar</span>
+          <span id="save-spinner" style="display:none">⌛</span>
+        </button>
+        <button id="btn-exportar"    class="btn">📄 Imprimir</button>
+        <button id="btn-copiar"      class="btn">📋 Copiar</button>
+        <button id="btn-resetar"     class="btn btn-danger">🗑 Reset</button>
+      </nav>
+    </header>
+
+    <div class="sheet-body">
+      <div class="sheet-grid">
+
+        <!-- ── IDENTIDADE ─────────────────────── -->
+        <div class="card card-full">
+          <p class="section-eyebrow">Identidade</p>
+          <div class="portrait-area">
+
+            <!-- Retrato -->
+            <div id="portrait-box" class="portrait-box" title="Clique para adicionar retrato">
+              <div id="portrait-preview">
+                <span class="portrait-placeholder">☠</span>
+              </div>
+              <div id="portrait-upload-status" class="portrait-status" style="display:none">⌛</div>
+            </div>
+            <input type="file" id="portrait-input" accept="image/*">
+
+            <!-- Campos -->
+            <div class="portrait-fields">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+                <div class="field-group">
+                  <label class="field-label" for="char-nome">Nome</label>
+                  <input type="text" id="char-nome" placeholder="Nome do personagem…">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="char-classe">Classe</label>
+                  <input type="text" id="char-classe" placeholder="ex: Eremita Esotérico">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="char-idade">Idade</label>
+                  <input type="number" id="char-idade" placeholder="22" min="1" max="999">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="char-origem">Origem</label>
+                  <input type="text" id="char-origem" placeholder="De onde veio…">
+                </div>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="char-descricao">Descrição</label>
+                <textarea id="char-descricao" rows="2" placeholder="Aparência, personalidade…"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ATRIBUTOS ──────────────────────── -->
+        <div class="card">
+          <h2>⚔ Atributos</h2>
+          <div class="attrs-grid">
+
+            <div class="attr-block">
+              <div class="attr-name">Força</div>
+              <div class="attr-controls">
+                <button class="btn attr-btn" id="attr-forca-minus">−</button>
+                <input type="number" class="attr-value" id="attr-forca-val" value="0" min="-3" max="6">
+                <button class="btn attr-btn" id="attr-forca-plus">+</button>
+              </div>
+              <div class="attr-modifier" id="attr-forca-mod">Mod: 0</div>
+              <button class="btn btn-sm" id="attr-forca-roll" style="margin-top:0.4rem;width:100%">🎲 d20</button>
+              <span class="dice-result" id="attr-forca-dice" style="display:none"></span>
+            </div>
+
+            <div class="attr-block">
+              <div class="attr-name">Agilidade</div>
+              <div class="attr-controls">
+                <button class="btn attr-btn" id="attr-agilidade-minus">−</button>
+                <input type="number" class="attr-value" id="attr-agilidade-val" value="0" min="-3" max="6">
+                <button class="btn attr-btn" id="attr-agilidade-plus">+</button>
+              </div>
+              <div class="attr-modifier" id="attr-agilidade-mod">Mod: 0</div>
+              <button class="btn btn-sm" id="attr-agilidade-roll" style="margin-top:0.4rem;width:100%">🎲 d20</button>
+              <span class="dice-result" id="attr-agilidade-dice" style="display:none"></span>
+            </div>
+
+            <div class="attr-block">
+              <div class="attr-name">Presença</div>
+              <div class="attr-controls">
+                <button class="btn attr-btn" id="attr-presenca-minus">−</button>
+                <input type="number" class="attr-value" id="attr-presenca-val" value="0" min="-3" max="6">
+                <button class="btn attr-btn" id="attr-presenca-plus">+</button>
+              </div>
+              <div class="attr-modifier" id="attr-presenca-mod">Mod: 0</div>
+              <button class="btn btn-sm" id="attr-presenca-roll" style="margin-top:0.4rem;width:100%">🎲 d20</button>
+              <span class="dice-result" id="attr-presenca-dice" style="display:none"></span>
+            </div>
+
+            <div class="attr-block">
+              <div class="attr-name">Resistência</div>
+              <div class="attr-controls">
+                <button class="btn attr-btn" id="attr-resistencia-minus">−</button>
+                <input type="number" class="attr-value" id="attr-resistencia-val" value="0" min="-3" max="6">
+                <button class="btn attr-btn" id="attr-resistencia-plus">+</button>
+              </div>
+              <div class="attr-modifier" id="attr-resistencia-mod">Mod: 0</div>
+              <button class="btn btn-sm" id="attr-resistencia-roll" style="margin-top:0.4rem;width:100%">🎲 d20</button>
+              <span class="dice-result" id="attr-resistencia-dice" style="display:none"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── VIDA & ARMADURA ────────────────── -->
+        <div class="card">
+          <h2>❤ Vida &amp; Armadura</h2>
+
+          <p class="section-eyebrow" style="margin-bottom:0.5rem">Pontos de Vida</p>
+          <div class="hp-container">
+            <div class="hp-block">
+              <label class="field-label">Atual</label>
+              <input type="number" id="char-hp-atual" class="hp-input" value="8" min="0">
+            </div>
+            <div class="hp-divider">/</div>
+            <div class="hp-block">
+              <label class="field-label">Máximo</label>
+              <input type="number" id="char-hp-max" class="hp-input" value="8" min="1">
+            </div>
+          </div>
+          <div class="hp-bar-container">
+            <div id="hp-bar" class="hp-bar" style="width:100%"></div>
+          </div>
+
+          <div class="ornament">· · ·</div>
+
+          <p class="section-eyebrow" style="margin-bottom:0.5rem">Armadura</p>
+          <div class="armor-row">
+            <div class="armor-value" id="char-armadora-val">0</div>
+            <select id="char-armadura" style="flex:1">
+              <option value="Nenhuma">Nenhuma (0)</option>
+              <option value="Couro">Couro (1)</option>
+              <option value="Malha">Malha (2)</option>
+              <option value="Placas">Placas (3)</option>
+              <option value="Personalizada">Personalizada…</option>
+            </select>
+          </div>
+          <div id="armadura-custom-row" class="field-group" style="display:none;margin-top:0.6rem">
+            <label class="field-label">Valor personalizado</label>
+            <input type="text" id="char-armadura-custom" placeholder="ex: 2 (Élfica)">
+          </div>
+
+          <div class="ornament">· · ·</div>
+
+          <p class="section-eyebrow" style="margin-bottom:0.5rem">Ouro</p>
+          <div class="gold-row">
+            <span class="gold-icon">🪙</span>
+            <input type="number" id="char-ouro" class="gold-input" value="0" min="0">
+            <span style="color:var(--muted);font-size:0.8rem">peças</span>
+          </div>
+        </div>
+
+        <!-- ── EQUIPAMENTOS ────────────────────── -->
+        <div class="card">
+          <h2>🎒 Equipamentos</h2>
+          <ul class="equipment-list" id="equip-list">
+            <li style="color:var(--muted);font-style:italic;font-size:0.85rem;padding:0.5rem 0">
+              Nenhum equipamento.
+            </li>
+          </ul>
+          <div class="add-item-row">
+            <input type="text" id="equip-add-input" placeholder="Adicionar item…" style="flex:1">
+            <button id="equip-add-btn" class="btn btn-sm">+ Add</button>
+          </div>
+        </div>
+
+        <!-- ── PODERES / PERGAMINHOS ──────────── -->
+        <div class="card">
+          <h2>✨ Poderes &amp; Pergaminhos</h2>
+          <div id="poderes-container">
+            <p style="color:var(--muted);font-style:italic;font-size:0.85rem">
+              Nenhum poder ou pergaminho.
+            </p>
+          </div>
+          <button id="btn-add-poder" class="btn btn-sm" style="margin-top:0.75rem">
+            + Adicionar poder
+          </button>
+        </div>
+
+        <!-- ── MALDIÇÕES ──────────────────────── -->
+        <div class="card">
+          <h2>👁 Maldições</h2>
+          <textarea id="char-maldicoes" rows="4"
+            placeholder="Maldições, marcas demoníacas, pactos sombrios…"></textarea>
+        </div>
+
+        <!-- ── FERIMENTOS ─────────────────────── -->
+        <div class="card">
+          <h2>🩸 Ferimentos</h2>
+          <ul class="wounds-list" id="ferimentos-list"></ul>
+          <div class="add-item-row">
+            <input type="text" id="ferimento-add-input" placeholder="Descrever ferimento…" style="flex:1">
+            <button id="ferimento-add-btn" class="btn btn-sm btn-danger">+ Add</button>
+          </div>
+        </div>
+
+        <!-- ── NOTAS ──────────────────────────── -->
+        <div class="card card-full">
+          <h2>📜 Notas</h2>
+          <textarea id="char-notas" rows="6"
+            placeholder="Objetivos, NPCs, acontecimentos da campanha, segredos…"></textarea>
+        </div>
+
+      </div><!-- /sheet-grid -->
+    </div><!-- /sheet-body -->
+  </section>
+
+</div><!-- /app -->
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- ── SUPABASE SDK (CDN oficial) ──────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ── SCRIPTS DO APP ─────────────────────────────────────── -->
+<script type="module" src="js/supabase.js"></script>
+<script type="module" src="js/script.js"></script>
+</body>
+</html>

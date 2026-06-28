@@ -1,0 +1,62 @@
+[
+  {
+    "nome": "Toque da Podridão",
+    "descricao": "Toque em um ser vivo. Causa d6 de dano e infecta a ferida.",
+    "custo": "1 HP"
+  },
+  {
+    "nome": "Vozes dos Mortos",
+    "descricao": "Interroga um cadáver. Ele responde d4 perguntas com a verdade.",
+    "custo": "Sanidade"
+  },
+  {
+    "nome": "Névoa Negra",
+    "descricao": "Conjura névoa impenetrável em área de 10m. Dura d4 turnos.",
+    "custo": "2 HP"
+  },
+  {
+    "nome": "Maldição do Sangue",
+    "descricao": "Alvo faz metade do dano por d6 rodadas. Sangra ao atacar.",
+    "custo": "3 HP"
+  },
+  {
+    "nome": "Animação Vil",
+    "descricao": "Levanta um cadáver como servo. Age por d4 rodadas.",
+    "custo": "5 HP"
+  },
+  {
+    "nome": "Olho do Corvo",
+    "descricao": "Vê através dos olhos de um pássaro morto por 10 minutos.",
+    "custo": "1 HP"
+  },
+  {
+    "nome": "Chama Negra",
+    "descricao": "Bola de fogo escuro. Causa d8 de dano, não ilumina.",
+    "custo": "4 HP"
+  },
+  {
+    "nome": "Sussurro Demoníaco",
+    "descricao": "Alvo fica paralisado de terror por d4 rodadas.",
+    "custo": "2 HP"
+  },
+  {
+    "nome": "Pele de Osso",
+    "descricao": "+d4 de armadura por uma hora. Sua pele racha e endurece.",
+    "custo": "3 HP"
+  },
+  {
+    "nome": "Drenagem Vital",
+    "descricao": "Rouба d6 HP de um alvo em contato e adiciona metade a você.",
+    "custo": "Contato físico"
+  },
+  {
+    "nome": "Portal das Sombras",
+    "descricao": "Abre buraco nas sombras. Teleporta até 30m.",
+    "custo": "6 HP"
+  },
+  {
+    "nome": "Praga da Ferrugem",
+    "descricao": "Metal do alvo deteriora em d4 turnos. Arma ou armadura quebra.",
+    "custo": "2 HP"
+  }
+]

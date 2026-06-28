@@ -1,0 +1,32 @@
+{
+  "prefixos": [
+    "Vorn", "Grak", "Skell", "Mort", "Drak", "Grim", "Skor", "Vex",
+    "Thar", "Krul", "Bael", "Zorn", "Vel", "Roth", "Nox", "Crux",
+    "Mal", "Fen", "Hag", "Svart", "Grym", "Dod", "Kvark", "Blod"
+  ],
+  "sufixos": [
+    "us", "ar", "ek", "on", "ax", "en", "oth", "ur",
+    "ak", "ix", "el", "an", "or", "ik", "un", "as",
+    "ok", "er", "eth", "ol", "arn", "in", "ast", "eld"
+  ],
+  "titulos": [
+    "o Maldito", "a Putrefata", "o Sem Nome", "a Abandonada",
+    "o Amaldiçoado", "a Esquecida", "o Condenado", "a Perdida",
+    "o Sombrio", "a Corrompida", "o Podre", "a Decaída",
+    "o Excomungado", "a Renegada", "o Errante", "a Miserável"
+  ],
+  "origens": [
+    "Aldeia queimada pelos próprios habitantes",
+    "Cripta de um rei sem sepultura",
+    "Pântano onde os mortos não descansam",
+    "Mosteiro de deus esquecido",
+    "Mina abandonada após colapso",
+    "Porto infestado de ratos gigantes",
+    "Floresta onde as árvores sangram",
+    "Ruínas de uma cidade amaldiçoada",
+    "Torre de feiticeiro louco",
+    "Campo de batalha nunca limpo",
+    "Mercado negro de órgãos",
+    "Taverna à beira do abismo"
+  ]
+}

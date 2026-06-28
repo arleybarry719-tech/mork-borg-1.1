@@ -1,0 +1,74 @@
+[
+  {
+    "nome": "Fanático Herege",
+    "hp": "d8",
+    "hpBonus": 4,
+    "descricao": "Servo de um deus esquecido, carregando fé corrompida.",
+    "equipamentos": ["Símbolo sagrado enferrujado", "Vestes rasgadas", "d4 pergaminhos proibidos"],
+    "poderes": true,
+    "numPoderes": 2
+  },
+  {
+    "nome": "Vagabundo Sombrio",
+    "hp": "d6",
+    "hpBonus": 2,
+    "descricao": "Errante sem lar, sem deus, sem esperança.",
+    "equipamentos": ["Faca enferrujada", "Capa surrada", "Garrafa de vinho azedo"],
+    "poderes": false,
+    "numPoderes": 0
+  },
+  {
+    "nome": "Eremita Esotérico",
+    "hp": "d4",
+    "hpBonus": 0,
+    "descricao": "Estudioso de artes proibidas, isolado do mundo.",
+    "equipamentos": ["Cajado", "Grimório desgastado", "d6 pergaminhos"],
+    "poderes": true,
+    "numPoderes": 3
+  },
+  {
+    "nome": "Capitão Naufrago",
+    "hp": "d10",
+    "hpBonus": 4,
+    "descricao": "Guerreiro dos mares perdidos, agora perdido em terra.",
+    "equipamentos": ["Cutelo enferrujado", "Armadura de couro marinho", "Bússola quebrada"],
+    "poderes": false,
+    "numPoderes": 0
+  },
+  {
+    "nome": "Nekromante Vil",
+    "hp": "d4",
+    "hpBonus": 0,
+    "descricao": "Conjurador de mortos que não deveriam andar.",
+    "equipamentos": ["Osso de fêmur afiado", "Pó de cadáver", "d4 pergaminhos da morte"],
+    "poderes": true,
+    "numPoderes": 4
+  },
+  {
+    "nome": "Guerreiro Bestial",
+    "hp": "d10",
+    "hpBonus": 6,
+    "descricao": "Mais animal que homem. Sobrevive na raiva pura.",
+    "equipamentos": ["Machado de guerra", "Pele de urso", "Dentes de criatura"],
+    "poderes": false,
+    "numPoderes": 0
+  },
+  {
+    "nome": "Ladrão Sanguinário",
+    "hp": "d6",
+    "hpBonus": 2,
+    "descricao": "Assassino por necessidade, assassino por prazer.",
+    "equipamentos": ["Adaga venenada", "Corda de seda", "Veneno (d4 doses)"],
+    "poderes": false,
+    "numPoderes": 0
+  },
+  {
+    "nome": "Monge Degenerado",
+    "hp": "d6",
+    "hpBonus": 2,
+    "descricao": "Ex-servo do templo, expulso por práticas abomináveis.",
+    "equipamentos": ["Cetro de osso", "Rosário profano", "Livro de penitências"],
+    "poderes": true,
+    "numPoderes": 1
+  }
+]

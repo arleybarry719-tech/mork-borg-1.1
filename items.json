@@ -1,0 +1,42 @@
+[
+  {
+    "nome": "Dente de Monstro",
+    "descricao": "+1 em ataques corpo a corpo quando usado como amuleto.",
+    "tipo": "amuleto"
+  },
+  {
+    "nome": "Olho de Vidro Amaldiçoado",
+    "descricao": "Vê no escuro, mas atrai criaturas sobrenaturais.",
+    "tipo": "amaldiçoado"
+  },
+  {
+    "nome": "Mapa Rasgado",
+    "descricao": "Parte de um mapa de uma ruína cheia de tesouros.",
+    "tipo": "quest"
+  },
+  {
+    "nome": "Moeda Sombria",
+    "descricao": "Moeda de metal desconhecido. Ninguém sabe de onde veio.",
+    "tipo": "misterioso"
+  },
+  {
+    "nome": "Crânio Falante",
+    "descricao": "Crânio que murmura segredos dos mortos. Nem sempre verdade.",
+    "tipo": "misterioso"
+  },
+  {
+    "nome": "Frasco de Sangue Antigo",
+    "descricao": "Sangue de criatura há muito extinta. Uso desconhecido.",
+    "tipo": "ingrediente"
+  },
+  {
+    "nome": "Espelho Negro",
+    "descricao": "Mostra o passado de quem olha. Pode enlouquecer.",
+    "tipo": "amaldiçoado"
+  },
+  {
+    "nome": "Chave Sem Porta",
+    "descricao": "Chave de ferro negro. Abre algo em algum lugar.",
+    "tipo": "quest"
+  }
+]
